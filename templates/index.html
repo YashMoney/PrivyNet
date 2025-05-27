@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="flex items-center min-h-screen">
+
+    <header id="nb" style="display: none;">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="nav-logo">PrivyNet</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="home.html" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">File System</a></li>
+                    <li class="nav-item"><a href="home.html" class="nav-link">Logout</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div id="wp">
+    <div class="cont p-6 rounded">
+        <h1 id="txt" class="text-2xl text-cyan-500 font-bold text-center mb-6">Sign in to your account</h1>
+
+        <!-- Login Section -->
+        <div id="login-section">
+            <input id="username" type="text" placeholder="Username" class="w-full p-2 mb-4 border rounded" required>
+            <input id="password" type="password" placeholder="Password" class="w-full p-2 mb-4 border rounded" required>
+            <input id="otp" type="text" placeholder="2FA Code" class="w-full p-2 mb-4 border rounded">
+            <button id="login-btn" class="w-full bg-cyan-500 text-white p-2 rounded hover:bg-blue-600">Login</button>
+        </div>
+
+        <!-- Main Interface (Hidden until login) -->
+        <div id="main-section" class="hidden">
+            <div id="admin-controls" class="hidden mb-4">
+                <select id="action" class="w-full p-2 mb-2 border rounded">
+                    <option value="">-- Select an Action --</option>
+                    <option value="LIST">List Files</option>
+                    <option value="CREATE">Create File</option>
+                    <option value="READ">Read File</option>
+                    <option value="EDIT">Edit File</option>
+                    <option value="DELETE">Delete File</option>
+                    <option value="LIST_REQUESTS">List Requests</option>
+                    <option value="HANDLE_REQUEST">Handle Request</option>
+                </select>
+            </div>
+            <div id="user-controls" class="hidden mb-4">
+                <select id="user-action" class="w-full p-2 mb-2 border rounded">
+                    <option value="">-- Select an Action --</option>
+                    <option value="LIST">List Files</option>
+                    <option value="READ">Read File</option>
+                    <option value="MAKE_REQUEST">Make Request</option>
+                </select>
+            </div>
+            <div id="filename-container" class="mb-2">
+                <input id="filename" type="text" placeholder="Filename" class="w-full p-2 border rounded">
+            </div>
+            <div id="content-container" class="mb-2">
+                <textarea id="content" placeholder="File content" class="w-full p-2 border rounded"></textarea>
+            </div>
+            <div id="lockButtons" class="hidden">
+                <button id="lck" click="toggleLock('LOCK')">Lock File</button>
+                <button id="lck" onclick="toggleLock('UNLOCK')">Unlock File</button>
+            </div>
+            <button id="execute-btn" class="w-full text-white p-2 rounded hover:bg-blue-600">Execute</button>
+            <pre id="output" class="p-4 mt-4 rounded h-48 overflow-auto"></pre>
+        </div>
+    </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html> 

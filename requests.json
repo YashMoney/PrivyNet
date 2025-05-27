@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "username": "user",
+    "type": "CREATE",
+    "filename": "example.txt",
+    "content": "bcd",
+    "status": "approved"
+  },
+  {
+    "id": 2,
+    "username": "user",
+    "type": "EDIT",
+    "filename": "gareeb1.txt",
+    "content": "",
+    "status": "approved"
+  },
+  {
+    "id": 3,
+    "username": "user",
+    "type": "EDIT",
+    "filename": "gareeb1.txt",
+    "content": "loool1",
+    "status": "approved"
+  }
+]

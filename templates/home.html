@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivyNet - Secure File Sharing</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="home.html" class="nav-logo">PrivyNet</a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="home.html" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">File System</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Login</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <h1 id="hero-title"></h1>
+                <p class="hero-subtitle animate-on-scroll">Secure. Controlled. Collaborative File Management.</p>
+                <a href="index.html" class="btn btn-primary animate-on-scroll">Access File System <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-bg-shape"></div>
+        </section>
+
+        <section id="about" class="content-section animate-on-scroll">
+            <div class="container">
+                <h2>About <span class="text-primary">PrivyNet</span></h2>
+                <p>PrivyNet is a state-of-the-art file sharing system designed with security and control at its core. Built on a robust client-server architecture, PrivyNet provides distinct roles for users and administrators, ensuring that data access and management are precisely governed. Whether you're an administrator overseeing critical files or a user accessing necessary documents, PrivyNet offers a seamless and secure experience.</p>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Core <span class="text-primary">Features</span></h2>
+                <div class="features-grid">
+                    <div class="feature-card animate-on-scroll">
+                        <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                        <h3>Robust Security</h3>
+                        <p>Two-factor authentication (2FA) using TOTP and role-based access control ensure your files are protected against unauthorized access.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <i class="fas fa-users-cog fa-3x text-primary"></i>
+                        <h3>Role-Based Access</h3>
+                        <p>Clearly defined Admin and User roles. Admins have full CRUD capabilities, while Users can list, read, and request file operations.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <i class="fas fa-lock fa-3x text-primary"></i>
+                        <h3>File Locking</h3>
+                        <p>Real-time file locking prevents concurrent modification conflicts, ensuring data integrity during collaborative access.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <i class="fas fa-tasks fa-3x text-primary"></i>
+                        <h3>Request System</h3>
+                        <p>Users can request specific file operations, which admins can then review, approve, or reject, streamlining workflows.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <i class="fas fa-rocket fa-3x text-primary"></i>
+                        <h3>Modern Technology</h3>
+                        <p>Powered by a Flask backend with WebSocket for real-time updates and a responsive, intuitive web frontend.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <i class="fas fa-cogs fa-3x text-primary"></i>
+                        <h3>Admin Powers</h3>
+                        <p>Administrators can create, read, edit, and delete files, manage user requests, and lock/unlock files for maintenance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="content-section alternate-bg animate-on-scroll">
+            <div class="container">
+                <h2>How <span class="text-primary">It Works</span></h2>
+                <div class="roles-explanation">
+                    <div class="role-card animate-on-scroll">
+                        <h4><i class="fas fa-user-shield"></i> Administrator Role</h4>
+                        <p>Admins are the gatekeepers. They can:</p>
+                        <ul>
+                            <li><i class="fas fa-plus-circle"></i> Create, Edit & Delete Files</li>
+                            <li><i class="fas fa-eye"></i> Read Any File</li>
+                            <li><i class="fas fa-key"></i> Lock/Unlock Files</li>
+                            <li><i class="fas fa-check-circle"></i> Approve/Reject User Requests</li>
+                            <li><i class="fas fa-list-ul"></i> List All Files & Pending Requests</li>
+                        </ul>
+                    </div>
+                    <div class="role-card animate-on-scroll">
+                        <h4><i class="fas fa-user"></i> User Role</h4>
+                        <p>Users have focused access. They can:</p>
+                        <ul>
+                            <li><i class="fas fa-list-ul"></i> List Available Files</li>
+                            <li><i class="fas fa-eye"></i> Read Permitted Files</li>
+                            <li><i class="fas fa-paper-plane"></i> Request File Operations (like edits or specific access)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta" class="cta-section animate-on-scroll">
+            <div class="container">
+                <h2>Ready to Experience <span class="text-primary">Secure File Management</span>?</h2>
+                <p>Log in to your PrivyNet account and take control of your files with confidence.</p>
+                <a href="index.html" class="btn btn-primary">Go to File System <i class="fas fa-folder-open"></i></a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© <span id="currentYear"></span> PrivyNet. All rights reserved. Secure File Sharing, Perfected.</p>
+        </div>
+    </footer>
+
+    <script src="/static/home.js"></script>
+</body>
+</html>

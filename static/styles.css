@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #002b36;
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.75) 0%, rgba(50, 50, 50, 0.65) 100%), url('images/3047867.jpg') no-repeat center center/cover
+}
+
+.cont {
+    /* display: flex;
+    flex-direction: column; */
+    width: 600px;
+    height: auto;
+    background-color: #001f27;
+    color: cyan;
+}
+
+input, textarea, button {
+    transition: all 0.3s ease;
+    background-color: #002b36;
+}
+
+#execute-btn {
+    background-color: cyan;
+    color: #001f27;
+}
+
+textarea {
+    resize: vertical;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+button:disabled {
+    background-color: cyan;
+    cursor: not-allowed;
+} 
+
+#output {
+    background-color: #002b36;
+}
+
+select {
+    background-color: #002b36;
+}
+
+#lck {
+    background-color: cyan;
+    color:#001f27;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+/* #lockButtons {
+    margin-bottom: 20px;
+} */
+
+/* #login-section {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+} */
