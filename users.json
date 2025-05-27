@@ -2,16 +2,16 @@
   "admin": {
     "password": "admin123",
     "role": "admin",
-    "2fa_secret": "6WGEWQAYN6DU6JZ3GZQ3N6ZSR7N4N5IS"
+    "2fa_secret": "YOUR_SECRET_KEY"
   },
   "admin1": {
     "password": "admin1234",
     "role": "admin",
-    "2fa_secret": "6WGEWQAYN6DU6JZ3GZQ3N6ZSR7N4N6IS"
+    "2fa_secret": "YOUR_SECRET_KEY"
   },
   "user": {
     "password": "user123",
     "role": "user",
-    "2fa_secret": "6WGEWQAYN6DU6JZ3GZQ3N6ZSR7N4N7IS"
+    "2fa_secret": "YOUR_SECRET_KEY"
   }
 }
