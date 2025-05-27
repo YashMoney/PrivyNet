@@ -1,222 +1,223 @@
-privyNet 🔒 Secure File Sharing System
-
-privyNet is a secure, client-server file sharing system with role-based access control (RBAC), two-factor authentication (2FA), and real-time file locking. It offers distinct functionalities for admin and user roles, ensuring secure file management through a Flask backend and a responsive web frontend.
-📋 Table of Contents
-
-Overview
-Features
-Architecture
-Backend Components
-Frontend Components
-
-
-Roles and Permissions
-Technology Stack
-Getting Started
-Prerequisites
-Installation
-Configuration
-Running the Application
-
-
-Usage
-Logging In
-Performing Actions
-
-
-Project Structure
-Contributing
-License
-
-🌟 Overview
-privyNet enables secure file storage, sharing, and management. Admins have full control over files and user requests, while users can list/read files and submit requests for admin approval. The system emphasizes security with 2FA, RBAC, and file locking to prevent concurrent access issues.
-✨ Features
-
-Authentication:
-Username/password login with TOTP-based 2FA 🔐
-Role-Based Access Control (RBAC) for admins and users
-
-
-File Operations:
-Admins: Create, read, edit, delete, lock/unlock files, manage requests
-Users: List/read files, request create/edit/delete operations
-
-
-File Locking:
-Read/write locks to prevent data corruption
-Real-time lock status updates via WebSocket
-
-
-Request System:
-Users submit file operation requests for admin approval
-Admins can approve/reject requests
-
-
-Security:
-Secure 2FA, RBAC, input validation, and session management
-
-
-
-🏛 Architecture
-Backend Components
-
-Web Server (web_server.py): Flask app handling HTTP requests, file locking (threading.Lock/RLock), sessions, and REST APIs.
-WebSocket Server (backend.py): Real-time communication for lock status and concurrent access.
-2FA (two_fa.py): TOTP-based 2FA using pyotp.
-Storage:
-users.json: User credentials, roles, 2FA secrets
-requests.json: User request tracking
-files/ directory: File storage
-
-
-
-Frontend Components
-
-HTML (templates/index.html, templates/home.html): Responsive interface with Tailwind CSS.
-JavaScript (static/app.js): Handles user interactions, API requests, and real-time UI updates.
-Styling (static/styles.css, static/home.css): Dark theme, responsive design.
-
-👥 Roles and Permissions
-
-
-
-Role
-Permissions
-
-
-
-Admin
-Create, read, edit, delete, lock/unlock files; manage user requests.
-
-
-User
-List/read files; request create/edit/delete operations.
-
-
-🛠 Technology Stack
-
-Backend: Python 3, Flask, PyOTP, WebSockets
-Frontend: HTML5, CSS3 (Tailwind CSS), Vanilla JavaScript
-Storage: JSON files (users.json, requests.json), local filesystem (files/)
-
-🚀 Getting Started
-Prerequisites
-
-🐍 Python 3.8+
-📦 pip (Python package installer)
-📱 TOTP authenticator app (e.g., Google Authenticator, Authy, FreeOTP)
-
-Installation
-
-Clone the Repository:git clone https://github.com/your-username/privyNet.git
-cd privyNet
-
-
-Set Up Virtual Environment:python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-
-Install Dependencies:Create requirements.txt:Flask
-pyotp
-qrcode
-websockets
-
-Install:pip install -r requirements.txt
-
-
-
-Configuration
-
-User Accounts (users.json):
-{
-  "admin": {
-    "password": "admin123",
-    "role": "admin",
-    "2fa_secret": "your-secret-key"
-  },
-  "user": {
-    "password": "user123",
-    "role": "user",
-    "2fa_secret": "your-secret-key"
-  }
-}
-
-
-Set Up 2FA:
-Open your TOTP app and add a new account.
-Enter the 2fa_secret from users.json (e.g., "your-secret-key").
-Select "Time-based (TOTP)" and name it (e.g., "privyNet Admin").
-Codes refresh every 30 seconds.
-
-
-
-
-Create Storage:
-
-files/ directory (auto-created if missing)
-requests.json: Initialize with [] (auto-created if missing)
-
-
-
-Running the Application
-
-Start the Flask server:python web_server.py
-
-
-Open http://localhost:8000 in your browser to access the home page.
-
-📖 Usage
-Logging In
-
-Go to the login page (index.html).
-Enter username/password (e.g., admin/admin123).
-Input the 6-digit 2FA code from your authenticator app.
-Click "Login".
-
-Performing Actions
-
-Interface: Role-specific dashboard with action dropdown (LIST, CREATE, READ, EDIT, DELETE, MAKE_REQUEST, LIST_REQUESTS, HANDLE_REQUEST).
-Steps:
-Select an action.
-Provide filename/content if needed.
-Click "Execute".
-View results in the output area.
-
-
-Admin Actions:
-Lock/unlock files for editing.
-Approve/reject requests using request IDs.
-
-
-User Actions:
-Submit requests for file operations.
-
-
-
-📂 Project Structure
-privyNet/
-├── files/               # Stored files
-├── static/              # Frontend assets
-│   ├── app.js           # Client-side logic
-│   ├── styles.css      # Custom styles
-│   └── home.css        # Home page styles
-├── templates/           # HTML templates
-│   ├── index.html      # File system interface
-│   └── home.html       # Landing page
-├── two_fa.py           # 2FA functions
-├── users.json          # User data
-├── requests.json       # User requests
-├── web_server.py       # Flask server
-├── backend.py          # WebSocket server
-└── README.md           # Documentation
-
-🤝 Contributing
-
-Fork the repository.
-Create a feature branch: git checkout -b feature/your-feature
-Commit changes: git commit -m "Add your feature"
-Push: git push origin feature/your-feature
-Open a pull request.
-
-📜 License
-This project is licensed under the MIT License.
+# privyNet - Secure File Sharing System
+
+privyNet is a secure, client-server based file sharing system featuring role-based access control, two-factor authentication (2FA), and real-time file locking mechanisms. It provides distinct functionalities for 'admin' and 'user' roles, ensuring controlled access and management of files.
+
+## Table of Contents
+1.  [Overview](#overview)
+2.  [Features](#features)
+3.  [Architecture](#architecture)
+    *   [Backend Components](#backend-components)
+    *   [Frontend Components](#frontend-components)
+4.  [Roles and Permissions](#roles-and-permissions)
+5.  [Technology Stack](#technology-stack)
+6.  [Getting Started](#getting-started)
+    *   [Prerequisites](#prerequisites)
+    *   [Installation](#installation)
+    *   [Configuration](#configuration)
+    *   [Running the Application](#running-the-application)
+7.  [How to Use](#how-to-use)
+    *   [Logging In](#logging-in)
+    *   [Performing Actions](#performing-actions)
+8.  [Project Structure](#project-structure)
+
+## Overview
+
+privyNet allows users to securely store, share, and manage files. Administrators have full control over files and user requests, while regular users can list and read files, and request further operations. The system is built with a Flask backend and a responsive web frontend.
+
+## Features
+
+*   **Authentication:**
+    *   Username/password authentication.
+    *   **Two-Factor Authentication (2FA)** using TOTP (Time-based One-Time Password) for enhanced security.
+    *   **Role-Based Access Control (RBAC):** Distinct 'admin' and 'user' roles.
+*   **File Operations:**
+    *   **Admin Capabilities:**
+        *   Create, Read, Edit, Delete files.
+        *   Lock/Unlock files for exclusive access.
+        *   List all files with their lock status.
+        *   Handle user requests (approve/reject).
+        *   View pending requests.
+    *   **User Capabilities:**
+        *   List available files.
+        *   Read files (if not locked for writing).
+        *   Make requests for file operations (e.g., create, edit, delete).
+*   **File Locking Mechanism:**
+    *   Read/Write locks to manage concurrent access.
+    *   Prevents data corruption during simultaneous edits.
+    *   Lock ownership tracking and display.
+*   **Request System:**
+    *   Users can request file operations that require admin privileges.
+    *   Admins can review, approve, or reject these requests.
+    *   Request tracking.
+*   **Security:**
+    *   Secure 2FA.
+    *   RBAC for granular permissions.
+    *   File locking.
+    *   (Assumed: Secure password handling - not explicitly detailed but implied by 'secure system').
+    *   Input validation and session management.
+
+## Architecture
+
+### Backend Components
+*   **Web Server (`web_server.py`):**
+    *   Main Flask application serving the web interface.
+    *   Handles HTTP requests for authentication and file operations.
+    *   Implements the file locking mechanism using `threading.Lock` and `threading.RLock`.
+    *   Manages user sessions and role-based access.
+    *   Provides REST API endpoints.
+*   **WebSocket Server (`backend.py` - *as per documentation*):**
+    *   Handles real-time communication with clients (e.g., for instant lock status updates).
+    *   Manages concurrent access control.
+*   **Two-Factor Authentication (`two_fa.py`):**
+    *   Implements 2FA using `pyotp` for TOTP.
+    *   Provides functions for generating 2FA secrets and verifying OTP codes.
+*   **User Configuration (`users.json`):**
+    *   Stores user credentials (username, password), roles, and 2FA secrets.
+*   **Requests Data (`requests.json`):**
+    *   Stores user-submitted file operation requests.
+*   **File Storage (`files/` directory):**
+    *   Directory where actual files are stored.
+
+### Frontend Components
+*   **HTML Interface (`templates/index.html`, `templates/home.html`):**
+    *   Responsive web interface built with Tailwind CSS.
+    *   Login form with 2FA input.
+    *   Role-specific action menus and file operation controls.
+    *   Real-time output display area.
+*   **Client-side Logic (`static/app.js`):**
+    *   Handles user interactions and authentication flow.
+    *   Manages file operation commands and requests to the backend.
+    *   Provides real-time UI updates (e.g., based on server responses).
+*   **Styling (`static/styles.css`, `static/home.css`):**
+    *   Custom styling, including a dark theme and responsive design.
+
+## Roles and Permissions
+
+*   **Admin:**
+    *   Can perform all file operations: Create, Read, Edit, Delete.
+    *   Can Lock and Unlock files.
+    *   Can List all files.
+    *   Can view and Handle (Approve/Reject) user requests.
+*   **User:**
+    *   Can List available files.
+    *   Can Read files.
+    *   Can Make Requests for file operations (Create, Edit, Delete) which admins then review.
+
+## Technology Stack
+
+*   **Backend:**
+    *   Python 3
+    *   Flask (Web Framework)
+    *   PyOTP (For 2FA TOTP generation and verification)
+    *   WebSockets (For real-time communication, as per documentation)
+*   **Frontend:**
+    *   HTML5
+    *   CSS3 (Tailwind CSS for utility-first styling)
+    *   JavaScript (Vanilla JS for client-side logic)
+*   **Data Storage:**
+    *   JSON files (`users.json`, `requests.json`) for user data and requests.
+    *   Local filesystem for file storage (`files/` directory).
+
+## Getting Started
+
+### Prerequisites
+*   Python 3.x
+*   pip (Python package installer)
+*   A TOTP Authenticator App (e.g., Google Authenticator, Authy, FreeOTP) for 2FA.
+
+### Installation
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repository-url>
+    cd privyNet
+    ```
+2.  **Create a virtual environment (recommended):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
+3.  **Install dependencies:**
+    Create a `requirements.txt` file with the following content:
+    ```txt
+    Flask
+    pyotp
+    qrcode # For generating QR codes if you extend 2FA setup
+    # Add 'websockets' if you implement the backend.py functionality
+    ```
+    Then run:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### Configuration
+
+1.  **User Accounts (`users.json`):**
+    The `users.json` file contains predefined user accounts, their passwords, roles, and 2FA secrets.
+    ```json
+    {
+      "admin": {
+        "password": "admin123",
+        "role": "admin",
+        "2fa_secret": "6WGEWQAYN6DU6JZ3GZQ3N6ZSR7N4N5IS"
+      },
+      "admin1": {
+        "password": "admin1234",
+        "role": "admin",
+        "2fa_secret": "6WGEWQAYN6DU6JZ3GZQ3N6ZSR7N4N6IS"
+      },
+      "user": {
+        "password": "user123",
+        "role": "user",
+        "2fa_secret": "6WGEWQAYN6DU6JZ3GZQ3N6ZSR7N4N7IS"
+      }
+    }
+    ```
+    *   **Setting up 2FA:** To log in with these users, you need to add their `2fa_secret` to your TOTP authenticator app.
+        *   Open your authenticator app.
+        *   Choose to add a new account.
+        *   Select "manual entry" or "enter setup key".
+        *   Provide an account name (e.g., "privyNet Admin") and enter the corresponding `2fa_secret` from `users.json`.
+        *   Ensure the type is "Time-based (TOTP)".
+        *   The app will then generate 6-digit codes that change every 30 seconds.
+
+2.  **Create Directories:**
+    Ensure the following directory and file exist in the root of your project:
+    *   `files/` (directory for storing uploaded files)
+    *   `requests.json` (empty JSON array `[]` if it doesn't exist, for storing user requests)
+
+    You can create them manually or the `web_server.py` script will create them on first run if they don't exist (for `files/` and `requests.json`).
+
+### Running the Application
+1.  Start the Flask web server:
+    ```bash
+    python web_server.py
+    ```
+2.  Open your web browser and navigate to: `http://127.0.0.1:8000` or `http://localhost:8000`.
+    You should see the home page, from which you can navigate to the file system login page (`index.html`).
+
+## How to Use
+
+### Logging In
+1.  Navigate to the login page (`index.html`).
+2.  Enter the username and password for one of the users defined in `users.json` (e.g., `admin` / `admin123`).
+3.  Open your TOTP authenticator app and get the current 6-digit code for the user you are logging in as.
+4.  Enter this 2FA code into the "2FA Code" field.
+5.  Click "Login".
+
+### Performing Actions
+Once logged in, the interface will adapt based on your role:
+
+*   **Select Action:** Choose an action from the dropdown menu (e.g., LIST, CREATE, READ, EDIT, DELETE, MAKE_REQUEST, LIST_REQUESTS, HANDLE_REQUEST).
+*   **Filename:** Enter the filename if required by the action.
+*   **Content:** Enter file content if creating or editing a file.
+*   **Execute:** Click the "Execute" button to perform the action.
+*   **Lock/Unlock (Admin only for EDIT):** Admins can lock files before editing to prevent conflicts and unlock them afterward.
+*   **Output:** Results of operations, file contents, or error messages will be displayed in the output area.
+
+**Admin Specifics:**
+*   **HANDLE_REQUEST:** When selected, you'll be prompted for the Request ID and whether to 'approve' or 'reject'.
+
+**User Specifics:**
+*   **MAKE_REQUEST:** When selected, you'll be prompted for the type of request (CREATE, EDIT, DELETE), filename, and content (if applicable).
+
+## Project Structure
