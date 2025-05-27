@@ -115,3 +115,111 @@ git clone <your-repository-url>
 cd privyNet
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+Create requirements.txt:
+
+txt
+Copy
+Edit
+Flask
+pyotp
+qrcode
+# Add websockets if using backend.py
+Install dependencies:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+⚙️ Configuration
+users.json
+Define users with passwords, roles, and 2FA secrets:
+
+json
+Copy
+Edit
+{
+  "admin": {
+    "password": "admin123",
+    "role": "admin",
+    "2fa_secret": "your-secret-key"
+  },
+  "user": {
+    "password": "user123",
+    "role": "user",
+    "2fa_secret": "your-secret-key"
+  }
+}
+Set up TOTP:
+
+Open your authenticator app.
+
+Add a new account → Enter 2fa_secret manually.
+
+Choose "Time-based (TOTP)".
+
+Directory Setup
+Ensure:
+
+files/ directory exists
+
+requests.json exists (initialize with [] if empty)
+
+🏃 Running the Application
+bash
+Copy
+Edit
+python web_server.py
+Open your browser:
+
+cpp
+Copy
+Edit
+http://127.0.0.1:8000
+📘 How to Use
+🔑 Logging In
+Go to the login page.
+
+Enter username and password from users.json.
+
+Open your authenticator app and enter the current 6-digit TOTP.
+
+Click “Login”.
+
+🧭 Performing Actions
+Depending on your role, you can:
+
+Select action (LIST, CREATE, READ, EDIT, DELETE, MAKE_REQUEST, etc.)
+
+Enter filename and content as required.
+
+Click "Execute" to perform the action.
+
+View results/output area.
+
+Admin Only:
+Lock/Unlock files before editing.
+
+Handle user requests (approve/reject by request ID).
+
+User Only:
+Submit file operation requests via MAKE_REQUEST.
+
+📁 Project Structure
+graphql
+Copy
+Edit
+privyNet/
+├── files/              # Directory for stored files
+├── static/
+│   ├── app.js          # JavaScript logic
+│   ├── styles.css      # CSS styles
+│   └── home.css        # CSS for home page
+├── templates/
+│   ├── index.html      # Main interface
+│   └── home.html       # Landing page
+├── two_fa.py           # TOTP-based 2FA handling
+├── users.json          # User credentials and 2FA keys
+├── requests.json       # Request log
+├── web_server.py       # Main Flask backend
+├── backend.py          # WebSocket server (optional)
+└── README.md           # Project documentation
