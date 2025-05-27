@@ -221,3 +221,18 @@ Once logged in, the interface will adapt based on your role:
 *   **MAKE_REQUEST:** When selected, you'll be prompted for the type of request (CREATE, EDIT, DELETE), filename, and content (if applicable).
 
 ## Project Structure
+privyNet/
+├── files/ # Directory where shared files are stored
+├── static/
+│ ├── app.js # Frontend JavaScript logic
+│ ├── styles.css # Custom CSS styles
+│ └── home.css # CSS for home page
+├── templates/
+│ ├── index.html # Main file system interface
+│ └── home.html # Home/Landing page
+├── two_fa.py # 2FA helper functions
+├── users.json # User credentials, roles, and 2FA secrets
+├── requests.json # Stores user file operation requests
+├── web_server.py # Flask backend application
+├── backend.py # WebSocket server (as per documentation)
+└── README.md # This file
